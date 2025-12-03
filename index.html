@@ -3,34 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我的第一个 Cloudflare Pages 网站</title>
+    <title>多API网站图标展示</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
-            background-color: #f0f0f0;
-            font-family: sans-serif;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            padding: 20px;
+            background-color: #f5f5f5;
         }
         .container {
-            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            background-color: #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         h1 {
+            text-align: center;
+            margin-bottom: 30px;
             color: #333;
+        }
+        .api-group {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .api-group:last-child {
+            border-bottom: none;
+        }
+        .api-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            padding-left: 8px;
+            border-left: 3px solid #3498db;
+        }
+        .sites {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .site-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            min-width: 200px;
+        }
+        .site-icon {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            border-radius: 4px;
+            background: #fff;
+            padding: 2px;
+        }
+        .site-name {
+            color: #333;
+        }
+        .error-icon {
+            background: #e74c3c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>你好，世界！</h1>
-        <p>这个静态网站是通过 GitHub 和 Cloudflare Pages 部署的。</p>
+        <h1>4个API获取网站图标对比</h1>
+
+        <!-- Google Favicon API -->
+        <div class="api-group">
+            <h2 class="api-title">Google Favicon API</h2>
+            <div class="sites">
+                <div class="site-item">
+                    <img class="site-icon" src="https://www.google.com/s2/favicons?domain=github.com&sz=32" alt="GitHub图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">GitHub</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://www.google.com/s2/favicons?domain=baidu.com&sz=32" alt="百度图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">百度</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://www.google.com/s2/favicons?domain=twitter.com&sz=32" alt="Twitter图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">Twitter</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://www.google.com/s2/favicons?domain=bilibili.com&sz=32" alt="B站图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">B站</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://www.google.com/s2/favicons?domain=npmjs.com&sz=32" alt="NPM图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">NPM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- DuckDuckGo Favicon API -->
+        <div class="api-group">
+            <h2 class="api-title">DuckDuckGo Favicon API</h2>
+            <div class="sites">
+                <div class="site-item">
+                    <img class="site-icon" src="https://icons.duckduckgo.com/ip3/github.com.ico?size=32" alt="GitHub图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">GitHub</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://icons.duckduckgo.com/ip3/baidu.com.ico?size=32" alt="百度图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">百度</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://icons.duckduckgo.com/ip3/twitter.com.ico?size=32" alt="Twitter图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">Twitter</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://icons.duckduckgo.com/ip3/bilibili.com.ico?size=32" alt="B站图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">B站</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://icons.duckduckgo.com/ip3/npmjs.com.ico?size=32" alt="NPM图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">NPM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Favicon Kit -->
+        <div class="api-group">
+            <h2 class="api-title">Favicon Kit</h2>
+            <div class="sites">
+                <div class="site-item">
+                    <img class="site-icon" src="https://faviconkit.com/github.com/32" alt="GitHub图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">GitHub</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://faviconkit.com/baidu.com/32" alt="百度图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">百度</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://faviconkit.com/twitter.com/32" alt="Twitter图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">Twitter</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://faviconkit.com/bilibili.com/32" alt="B站图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">B站</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://faviconkit.com/npmjs.com/32" alt="NPM图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">NPM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Icon Horse -->
+        <div class="api-group">
+            <h2 class="api-title">Icon Horse</h2>
+            <div class="sites">
+                <div class="site-item">
+                    <img class="site-icon" src="https://icon.horse/icon/github.com" alt="GitHub图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">GitHub</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://icon.horse/icon/baidu.com" alt="百度图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">百度</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://icon.horse/icon/twitter.com" alt="Twitter图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">Twitter</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://icon.horse/icon/bilibili.com" alt="B站图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">B站</span>
+                </div>
+                <div class="site-item">
+                    <img class="site-icon" src="https://icon.horse/icon/npmjs.com" alt="NPM图标" onerror="this.classList.add('error-icon');this.innerHTML='×'">
+                    <span class="site-name">NPM</span>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
