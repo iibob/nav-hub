@@ -48,9 +48,14 @@
 
 ## 🧩 扩展使用：设为新标签页
 
-建议配合浏览器插件使用，实现开启浏览器即达：
+建议配合浏览器插件使用，实现开启浏览器即达。
 
 - **推荐插件**：
-    - **New Tab Redirect**：[应用商店](https://chromewebstore.google.com/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna) | [GitHub](https://github.com/jimschubert/NewTab-Redirect)
-    - **Custom New Tab URL**：[应用商店](https://chromewebstore.google.com/detail/custom-new-tab-url/mmjbdbjnoablegbkcklggeknkfcjkjia)
+
+  |插件名称|适用浏览器|插件地址|
+  | ---- | ---- | ---- |
+  |New Tab Redirect|Chrome|[应用商店](https://chromewebstore.google.com/detail/new-tab-redirect/icpgjfneehieebagbmdbhnlpiopdcmna) \| [GitHub](https://github.com/jimschubert/NewTab-Redirect)|
+  |Custom New Tab URL|Chrome|[应用商店](https://chromewebstore.google.com/detail/custom-new-tab-url/mmjbdbjnoablegbkcklggeknkfcjkjia)|
+  |New Tab (shows your homepage)|Firefox|[应用商店](https://addons.mozilla.org/en-US/firefox/addon/new-tab-shows-your-homepage/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search)|
+
 - **小技巧**：在插件设置中勾选 **“在地址栏启用光标”**，即可在打开新标签页时直接输入搜索，兼顾导航与搜索效率。
