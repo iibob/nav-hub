@@ -329,6 +329,20 @@
     listEl.appendChild(fragment);
   }
 
+  document.getElementById("btn-clear-all").addEventListener("click", () => {
+    showConfirm("确定清空所有分类和网站数据吗？此操作不可恢复！", () => {
+      navKeys = [];
+      siteData = {};
+      currentKey = "";
+      markModified();
+      renderCatManager();
+      initNav();
+      document.getElementById("content-title").textContent = "";
+      document.getElementById("grid").innerHTML = "";
+      openModal(document.getElementById("modal-cat"));
+    });
+  });
+
   function moveCat(idx, dir) {
     if (idx + dir < 0 || idx + dir >= navKeys.length) return;
     [navKeys[idx], navKeys[idx + dir]] = [navKeys[idx + dir], navKeys[idx]];
@@ -345,7 +359,13 @@
       markModified();
       renderCatManager();
       initNav();
-      if (currentKey) render(currentKey);
+      // if (currentKey) render(currentKey);
+      if (currentKey) {
+        render(currentKey);
+      } else {
+        document.getElementById("content-title").textContent = "";
+        document.getElementById("grid").innerHTML = "";
+      }
       openModal(document.getElementById("modal-cat"));
     });
   }
@@ -382,6 +402,13 @@
   }
 
   document.getElementById("menu-add-site").addEventListener("click", () => {
+    if (!navKeys.length) {
+      showConfirm("请先添加分类！", () => {
+        renderCatManager();
+        openModal(modalCat);
+      }, true);
+      return;
+    }
     document.getElementById("site-modal-title").textContent = "添加网站";
     populateCatSelect(currentKey);
     document.getElementById("site-name").value = "";
@@ -441,6 +468,14 @@
 
     markModified();
     closeModal();
+
+    if (currentKey !== cat) {
+      currentKey = cat;
+      document.querySelectorAll(".nav-item").forEach((item, i) => {
+        item.classList.toggle("active", navKeys[i] === cat);
+      });
+    }
+
     render(currentKey);
   });
 

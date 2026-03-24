@@ -343,11 +343,11 @@ body {
 }
 
 .modal-actions {
-  margin-top: 25px;
+  margin-top: 30px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
 }
 
 .modal-actions>div {
@@ -392,10 +392,13 @@ body {
   color: #fff;
 }
 
-#modal-cat .close-modal {
-  width: 100%;
+#btn-clear-all {
+  width: 50%;
   padding: 12px;
-  margin-top: 10px;
+}
+
+#modal-cat .close-modal {
+  width: 50%;
 }
 
 .cat-list {
