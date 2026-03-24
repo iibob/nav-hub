@@ -1,12 +1,27 @@
 <!doctype html>
 <html lang="zh-CN">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>导航</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+  <div id="save-reminder" class="float-banner hidden">
+    <span>数据已修改，请下载以免丢失。</span>
+    <div>
+      <button id="btn-download" class="btn primary">下 载</button>
+      <button id="btn-close-reminder" class="btn">✕</button>
+    </div>
+  </div>
+
+  <div id="edit-banner" class="float-banner edit-banner hidden">
+    <span>编辑模式下，可点击卡片进行修改。</span>
+    <button id="btn-exit-edit" class="btn">退出编辑</button>
+  </div>
+
   <div class="shell">
     <nav class="nav"></nav>
     <main class="content">
@@ -14,6 +29,73 @@
       <div class="grid" id="grid"></div>
     </main>
   </div>
+
+  <div class="settings-container">
+    <div class="settings-btn" id="settings-btn">
+      <img src="settings.svg" alt="Settings">
+    </div>
+    <ul class="settings-menu hidden" id="settings-menu">
+      <li id="menu-cat-mgr">分类管理</li>
+      <li id="menu-add-site">添加网站</li>
+      <li id="menu-edit-site">编辑网站</li>
+    </ul>
+  </div>
+
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div id="modal-cat" class="modal hidden">
+      <h3>分类管理</h3>
+      <ul class="cat-list" id="cat-list"></ul>
+      <div class="form-group row">
+        <input type="text" id="new-cat-name" placeholder="新分类名称">
+        <button id="btn-add-cat" class="btn primary">新 增</button>
+      </div>
+      <div class="modal-actions">
+        <button class="btn close-modal">关 闭</button>
+      </div>
+    </div>
+
+    <div id="modal-site" class="modal hidden">
+      <h3 id="site-modal-title">添加网站</h3>
+      <input type="hidden" id="site-edit-old-cat">
+      <input type="hidden" id="site-edit-idx">
+
+      <div class="form-group">
+        <label>分类</label>
+        <select id="site-cat"></select>
+      </div>
+      <div class="form-group">
+        <label>名称</label>
+        <input type="text" id="site-name" placeholder="网站名称">
+      </div>
+      <div class="form-group">
+        <label>网址 (URL)</label>
+        <input type="text" id="site-url" placeholder="https://...">
+      </div>
+      <div class="form-group">
+        <label>图标 (可选)</label>
+        <input type="text" id="site-icon" placeholder="图标网址或留空">
+      </div>
+
+      <div class="modal-actions">
+        <button id="btn-delete-site" class="btn danger hidden">删除网站</button>
+        <div>
+          <button class="btn close-modal">取 消</button>
+          <button id="btn-save-site" class="btn primary">保 存</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-confirm" class="modal hidden">
+      <h3>操作确认</h3>
+      <p id="confirm-msg">确定要执行此操作吗？</p>
+      <div class="confirm-actions">
+        <button id="btn-confirm-cancel" class="btn">取 消</button>
+        <button id="btn-confirm-ok" class="btn primary">确 定</button>
+      </div>
+    </div>
+  </div>
+
   <script src="main.js"></script>
 </body>
+
 </html>

@@ -11,7 +11,8 @@
   --icon-bg: #e78b8b, #f8bd2f, #a9c264, #70b99b, #77a0ce, #cf8dca;
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -39,6 +40,7 @@ body {
   box-shadow: 0 10px 30px rgba(8, 12, 20, 0.25);
   overflow: hidden;
   display: flex;
+  border-radius: 8px;
 }
 
 .nav {
@@ -128,8 +130,8 @@ body {
   gap: 12px;
   padding: 10px 14px;
   box-sizing: border-box;
-  transition: transform 180ms ease, box-shadow 180ms ease;
-  cursor: default;
+  transition: transform 180ms ease, box-shadow 180ms ease, border 180ms ease;
+  cursor: pointer;
   user-select: none;
   min-width: 0;
   text-decoration: none;
@@ -154,7 +156,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block
+  display: block;
 }
 
 .tile .title {
@@ -170,7 +172,333 @@ body {
 .tile:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 10px rgba(24, 31, 50, 0.1);
+}
+
+.edit-mode-tile {
+  border: 1px dashed var(--accent) !important;
+  animation: wiggle 2s linear infinite;
+}
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-1deg);
+  }
+
+  75% {
+    transform: rotate(1deg);
+  }
+}
+
+.edit-mode-tile:hover {
+  background: #feebeb;
+  transform: scale(1.02);
+}
+
+.settings-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 100;
+}
+
+.settings-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  opacity: 0.2;
+  box-shadow: 0 4px 12px rgba(240, 84, 81, 0.4);
+  transition: transform 0.2s;
+}
+
+.settings-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.settings-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  background: var(--accent);
+}
+
+.settings-btn:hover img {
+  filter: brightness(0) invert(1);
+}
+
+.settings-menu {
+  position: absolute;
+  bottom: 60px;
+  right: 0;
+  background: #fff;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  width: 100px;
+  transform-origin: bottom right;
+}
+
+.settings-menu li {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #333;
+}
+
+.settings-menu li:hover {
+  background: #f0f0f0;
+  color: var(--accent);
+}
+
+.float-banner {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  z-index: 200;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  top: auto !important;
+}
+
+.edit-banner {
+  background: var(--accent);
+  color: white;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--page-bg);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.form-group.row {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-actions {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.modal-actions>div {
+  display: flex;
+  gap: 15px;
+}
+
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  min-width: 80px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background 0.2s;
+  background: #eee;
+  color: #333;
+}
+
+.btn:hover {
+  background: #ddd;
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #d94240;
+}
+
+.btn.danger {
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.btn.danger:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+#modal-cat .close-modal {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+}
+
+.cat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.cat-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.cat-list li:last-child {
+  border-bottom: none;
+}
+
+.cat-actions button {
+  margin-left: 5px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+
+.cat-actions button.danger {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+.cat-actions button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.cat-actions button.danger:hover {
+  background: #d94240;
+  border-color: #d94240;
+}
+
+.hidden {
+  display: none !important;
+}
+
+#btn-add-cat {
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 110px;
+}
+
+#save-reminder {
+  bottom: 30px;
+}
+
+#save-reminder>div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#edit-banner {
+  bottom: 90px;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+#btn-close-reminder {
+  opacity: 0.3;
+  background: transparent;
+  min-width: unset;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#btn-close-reminder:hover {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--accent);
+}
+
+#confirm-msg {
+  color: #444;
+  font-size: 14px;
+  margin: 0 0 20px 0;
+}
+
+#modal-confirm {
+  width: 320px;
 }
 
 @media (max-width:900px) {
@@ -226,5 +554,11 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
     margin-top: 0;
+  }
+
+  .float-banner {
+    width: 90%;
+    flex-direction: column;
+    text-align: center;
   }
 }
