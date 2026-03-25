@@ -359,7 +359,6 @@
       markModified();
       renderCatManager();
       initNav();
-      // if (currentKey) render(currentKey);
       if (currentKey) {
         render(currentKey);
       } else {
@@ -488,6 +487,10 @@
       closeModal();
       render(currentKey);
     });
+  });
+
+  document.getElementById("menu-about").addEventListener("click", () => {
+    openModal(document.getElementById("modal-about"));
   });
 
   loadData();

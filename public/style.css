@@ -310,6 +310,7 @@ body {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 }
 
+.modal h1,
 .modal h3 {
   margin-top: 0;
   margin-bottom: 20px;
@@ -346,13 +347,16 @@ body {
   margin-top: 30px;
   width: 100%;
   display: flex;
-  justify-content: space-between;
   gap: 12px;
 }
 
 .modal-actions>div {
   display: flex;
   gap: 15px;
+}
+
+.action-right {
+  margin-left: auto;
 }
 
 .btn {
@@ -502,6 +506,24 @@ body {
 
 #modal-confirm {
   width: 320px;
+}
+
+.about-desc {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.about-links {
+  font-size: 13px;
+  color: #888;
+  display: flex;
+  gap: 16px;
+}
+
+.about-links a {
+  color: var(--accent);
+  text-decoration: none;
 }
 
 @media (max-width:900px) {
